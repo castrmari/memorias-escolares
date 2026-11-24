@@ -13,11 +13,11 @@ Atividade avaliativa final da disciplina de **Programação Web**: site pessoal 
 ├── js/dados.js         → CONTEÚDO: memórias escolares
 ├── js/redacoes.js      → as 16 redações (modelo ENEM)
 ├── js/script.js        → interatividade
-└── assets/img/         → fotos e ícones
+└── assets/img/         → ícone do site
 ```
 
 ## Recursos interativos
-- Linha do tempo com filtro por etapa, fotos ampliáveis (lightbox) e sanfona "momento inesquecível"
+- Linha do tempo com filtro por etapa e sanfona "momento inesquecível"
 - 16 redações em cards com busca, filtro por ano e leitura em janela modal (setas ← → navegam)
 - Tema claro/escuro, menu mobile, contadores animados, animações ao rolar e confete 🎉
 

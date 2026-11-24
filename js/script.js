@@ -5,7 +5,6 @@
 
 const $ = (seletor) => document.querySelector(seletor);
 const $$ = (seletor) => document.querySelectorAll(seletor);
-const FOTO_PADRAO = "assets/img/placeholder.svg";
 
 /* ---------- Nome do aluno ---------- */
 ["#hero-nome", "#rodape-nome"].forEach((id) => ($(id).textContent = MEU_NOME));
@@ -42,8 +41,6 @@ const linhaTempo = $("#linhaTempo");
 linhaTempo.innerHTML = MEMORIAS.map((m) => `
   <li class="marco revelar" data-etapa="${m.etapa}" data-icone="${m.icone}">
     <div class="marco-card">
-      <img class="marco-foto" src="${m.foto}" alt="${m.titulo}" loading="lazy"
-           data-legenda="${m.periodo} — ${m.titulo}">
       <div class="marco-corpo">
         <span class="marco-periodo">${m.periodo}</span>
         <h3>${m.titulo}</h3>
@@ -57,11 +54,6 @@ linhaTempo.innerHTML = MEMORIAS.map((m) => `
     </div>
   </li>`).join("");
 
-// Se a foto ainda não foi adicionada, usa a imagem de exemplo
-$$(".marco-foto").forEach((img) => {
-  img.addEventListener("error", () => { if (!img.src.endsWith(FOTO_PADRAO)) img.src = FOTO_PADRAO; });
-});
-
 // Filtro por etapa
 $$("#filtrosEtapa .filtro").forEach((botao) => {
   botao.addEventListener("click", () => {
@@ -73,19 +65,6 @@ $$("#filtrosEtapa .filtro").forEach((botao) => {
     });
   });
 });
-
-/* ---------- Lightbox (ampliar foto) ---------- */
-const lightbox = $("#lightbox");
-linhaTempo.addEventListener("click", (e) => {
-  if (!e.target.classList.contains("marco-foto")) return;
-  $("#lightboxImg").src = e.target.src;
-  $("#lightboxImg").alt = e.target.alt;
-  $("#lightboxLegenda").textContent = e.target.dataset.legenda;
-  lightbox.classList.add("aberto");
-});
-function fecharLightbox() { lightbox.classList.remove("aberto"); }
-$("#fecharLightbox").addEventListener("click", fecharLightbox);
-lightbox.addEventListener("click", (e) => { if (e.target === lightbox) fecharLightbox(); });
 
 /* =========================================================
    REDAÇÕES — cards + busca + modal de leitura
@@ -173,7 +152,7 @@ $("#btnProxima").addEventListener("click", () => navegar(1));
 
 // Teclado: Esc fecha, setas navegam
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") { fecharModal(); fecharLightbox(); }
+  if (e.key === "Escape") fecharModal();
   if (modal.classList.contains("aberto")) {
     if (e.key === "ArrowRight") navegar(1);
     if (e.key === "ArrowLeft") navegar(-1);

@@ -147,9 +147,9 @@ button { font: inherit; cursor: pointer; }
 
 .marco-card {
   background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio);
+  border-top: 5px solid var(--secundaria);
   overflow: hidden; box-shadow: var(--sombra);
 }
-.marco-foto { width: 100%; aspect-ratio: 16/10; object-fit: cover; cursor: zoom-in; background: var(--fundo-alt); }
 .marco-corpo { padding: 20px 22px; }
 .marco-periodo { font-size: .8rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--secundaria); }
 .marco-corpo h3 { font-family: var(--fonte-titulo); font-size: 1.4rem; margin: 4px 0 10px; }
@@ -193,11 +193,11 @@ button { font: inherit; cursor: pointer; }
 /* =========================================================
    MODAL E LIGHTBOX
    ========================================================= */
-.modal, .lightbox {
+.modal {
   position: fixed; inset: 0; z-index: 100; display: none;
   align-items: center; justify-content: center; padding: 16px;
 }
-.modal.aberto, .lightbox.aberto { display: flex; animation: aparecer .25s ease; }
+.modal.aberto { display: flex; animation: aparecer .25s ease; }
 .modal-fundo { position: absolute; inset: 0; background: rgba(10, 12, 20, .65); }
 .modal-caixa {
   position: relative; background: var(--superficie); border-radius: var(--raio);
@@ -217,10 +217,6 @@ button { font: inherit; cursor: pointer; }
 }
 .modal-rodape .btn { padding: 8px 14px; font-size: .9rem; }
 
-.lightbox { background: rgba(5, 6, 10, .9); flex-direction: column; }
-.lightbox img { max-height: 80vh; border-radius: 10px; }
-.lightbox p { color: #fff; margin-top: 12px; text-align: center; }
-.lightbox .modal-fechar { background: #fff; color: #111; }
 
 @keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
 
