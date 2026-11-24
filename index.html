@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site pessoal de formatura: memórias escolares e portfólio de redações.">
+  <title>Maria Clara do Prado de Castro | Formatura 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- ===== CABEÇALHO / NAVEGAÇÃO ===== -->
+  <header class="topo" id="topo">
+    <nav class="nav container">
+      <a href="#inicio" class="logo">🎓 <span id="logo-nome">Seu Nome</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#memorias">Memórias</a></li>
+        <li><a href="#redacoes">Redações</a></li>
+        <li><a href="#agradecimentos">Agradecimentos</a></li>
+        <li><button class="tema-btn" id="temaBtn" aria-label="Alternar tema claro/escuro">🌙</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="inicio">
+      <div class="container hero-conteudo">
+        <p class="hero-tag">Turma de 2026 · Ensino Médio</p>
+        <h1>Da pré-escola ao <span class="destaque">3º ano</span>: a minha história.</h1>
+        <p class="hero-texto">
+          Olá! Eu sou <strong id="hero-nome">Seu Nome</strong> e este site guarda as memórias de
+          toda a minha trajetória escolar e as redações que escrevi ao longo do Ensino Médio.
+        </p>
+        <div class="hero-botoes">
+          <a href="#memorias" class="btn btn-primario">Ver memórias</a>
+          <a href="#redacoes" class="btn btn-secundario">Ler redações</a>
+        </div>
+
+        <div class="contadores">
+          <div class="contador"><strong data-alvo="14">0</strong><span>anos de escola</span></div>
+          <div class="contador"><strong data-alvo="5">0</strong><span>escolas</span></div>
+          <div class="contador"><strong data-alvo="2800">0</strong><span>dias letivos (aprox.)</span></div>
+          <div class="contador"><strong data-alvo="16">0</strong><span>redações</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MEMÓRIAS ESCOLARES (LINHA DO TEMPO) ===== -->
+    <section class="secao" id="memorias">
+      <div class="container">
+        <h2 class="titulo-secao">Memórias Escolares</h2>
+        <p class="subtitulo-secao">Uma viagem no tempo, etapa por etapa. Clique nas fotos para ampliar.</p>
+
+        <div class="filtros" id="filtrosEtapa" role="tablist">
+          <button class="filtro ativo" data-etapa="todas">Todas</button>
+          <button class="filtro" data-etapa="infantil">Educação Infantil</button>
+          <button class="filtro" data-etapa="fund1">Fundamental I</button>
+          <button class="filtro" data-etapa="fund2">Fundamental II</button>
+          <button class="filtro" data-etapa="medio">Ensino Médio</button>
+        </div>
+
+        <ol class="linha-tempo" id="linhaTempo">
+          <!-- Preenchido pelo JavaScript a partir de js/dados.js -->
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== PORTFÓLIO DE REDAÇÕES ===== -->
+    <section class="secao secao-alt" id="redacoes">
+      <div class="container">
+        <h2 class="titulo-secao">Portfólio de Redações</h2>
+        <p class="subtitulo-secao">16 textos produzidos nas aulas de Língua Portuguesa e Redação. Clique em um card para ler.</p>
+
+        <div class="barra-redacoes">
+          <input type="search" id="buscaRedacao" placeholder="🔎 Buscar por título ou tema..." aria-label="Buscar redação">
+          <select id="filtroAno" aria-label="Filtrar por ano">
+            <option value="todos">Todos os anos</option>
+            <option value="1º ano">1º ano</option>
+            <option value="2º ano">2º ano</option>
+            <option value="3º ano">3º ano</option>
+          </select>
+        </div>
+        <p class="contagem" id="contagemRedacoes"></p>
+
+        <div class="grade-cards" id="gradeRedacoes">
+          <!-- Preenchido pelo JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AGRADECIMENTOS ===== -->
+    <section class="secao" id="agradecimentos">
+      <div class="container agradecimentos">
+        <h2 class="titulo-secao">Agradecimentos</h2>
+        <p>
+          À minha família, que me apoiou em cada mudança de cidade e de escola. À minha irmã gêmea,
+          Ana Lívia, companheira de toda a jornada e, desde o 6º ano, também de sala. Aos professores
+          e professoras de Jaguariaíva, da Inovação do Saber, do Novo Éden, da Natália de Conto Costa
+          e do Morelli, e aos amigos que tornaram cada dia mais leve. Este site é para vocês. 💛
+        </p>
+        <button class="btn btn-primario" id="btnComemorar">🎉 Comemorar a formatura!</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Feito com HTML, CSS e JavaScript por <span id="rodape-nome">Seu Nome</span> · Programação Web · 2026</p>
+  </footer>
+
+  <!-- ===== MODAL DE LEITURA DE REDAÇÃO ===== -->
+  <div class="modal" id="modalRedacao" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+    <div class="modal-fundo" data-fechar></div>
+    <article class="modal-caixa">
+      <button class="modal-fechar" data-fechar aria-label="Fechar">✕</button>
+      <p class="modal-meta" id="modalMeta"></p>
+      <h3 id="modalTitulo"></h3>
+      <div class="modal-texto" id="modalTexto"></div>
+      <div class="repertorios" id="modalRepertorios"></div>
+      <div class="modal-rodape">
+        <button class="btn btn-secundario" id="btnAnterior">← Anterior</button>
+        <span id="modalPosicao"></span>
+        <button class="btn btn-secundario" id="btnProxima">Próxima →</button>
+      </div>
+    </article>
+  </div>
+
+  <!-- ===== LIGHTBOX DE FOTOS ===== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="modal-fechar" id="fecharLightbox" aria-label="Fechar">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <p id="lightboxLegenda"></p>
+  </div>
+
+  <button class="voltar-topo" id="voltarTopo" aria-label="Voltar ao topo">↑</button>
+  <canvas id="confete"></canvas>
+
+  <script src="js/dados.js"></script>
+  <script src="js/redacoes.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
