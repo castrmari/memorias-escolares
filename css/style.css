@@ -2,30 +2,32 @@
    VARIÁVEIS DE TEMA (claro e escuro)
    ========================================================= */
 :root {
-  --fundo: #fbf8f3;
-  --fundo-alt: #f1ebe1;
+  --fundo: #faf7fe;
+  --fundo-alt: #f1eafb;
   --superficie: #ffffff;
-  --texto: #1f2430;
-  --texto-suave: #5b6272;
-  --primaria: #1e3a8a;      /* azul formatura */
-  --secundaria: #c9a227;    /* dourado */
-  --borda: #e3dccf;
-  --sombra: 0 10px 30px rgba(31, 36, 48, 0.08);
+  --texto: #241a33;
+  --texto-suave: #5f5470;
+  --primaria: #5b21b6;      /* roxo profundo */
+  --secundaria: #a21caf;    /* roxo-magenta */
+  --lavanda: #ede4fb;       /* roxo bem claro */
+  --borda: #e4d9f3;
+  --sombra: 0 10px 30px rgba(59, 23, 110, 0.10);
   --raio: 14px;
   --fonte-titulo: "Fraunces", Georgia, serif;
   --fonte-texto: "Inter", system-ui, sans-serif;
 }
 
 body.escuro {
-  --fundo: #11151f;
-  --fundo-alt: #171c28;
-  --superficie: #1d2331;
-  --texto: #ecedf1;
-  --texto-suave: #a6acbb;
-  --primaria: #8fb0ff;
-  --secundaria: #e6c25a;
-  --borda: #2c3446;
-  --sombra: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --fundo: #140f1f;
+  --fundo-alt: #1a1429;
+  --superficie: #221a35;
+  --texto: #efe9fa;
+  --texto-suave: #b5a9c9;
+  --primaria: #c4b5fd;
+  --secundaria: #f0abfc;
+  --lavanda: #2e2346;
+  --borda: #362a4f;
+  --sombra: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* =========================================================
@@ -128,33 +130,52 @@ button { font: inherit; cursor: pointer; }
 /* =========================================================
    LINHA DO TEMPO
    ========================================================= */
-.linha-tempo { list-style: none; position: relative; }
+.linha-tempo { list-style: none; position: relative; max-width: 900px; margin-inline: auto; }
 .linha-tempo::before {
-  content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px;
-  background: linear-gradient(var(--primaria), var(--secundaria)); transform: translateX(-50%);
+  content: ""; position: absolute; top: 8px; bottom: 8px; left: 172px; width: 3px; border-radius: 3px;
+  background: linear-gradient(var(--primaria), var(--secundaria));
 }
-.marco { position: relative; width: 50%; padding: 0 40px 50px; }
-.marco:nth-child(odd) { left: 0; }
-.marco:nth-child(even) { left: 50%; }
-.marco::after {
-  content: attr(data-icone); position: absolute; top: 10px; width: 44px; height: 44px;
-  display: grid; place-items: center; font-size: 1.3rem; border-radius: 50%;
-  background: var(--superficie); border: 3px solid var(--secundaria);
+.marco {
+  position: relative; display: grid; grid-template-columns: 140px 1fr; gap: 64px;
+  padding-bottom: 28px;
 }
-.marco:nth-child(odd)::after { right: -22px; }
-.marco:nth-child(even)::after { left: -22px; }
 .marco.oculto { display: none; }
 
-.marco-card {
-  background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio);
-  border-top: 5px solid var(--secundaria);
-  overflow: hidden; box-shadow: var(--sombra);
+/* Coluna do ano */
+.marco-ano { text-align: right; padding-top: 6px; }
+.marco-ano strong {
+  display: block; font-family: var(--fonte-titulo); font-size: 1.5rem; line-height: 1.1; color: var(--primaria);
 }
-.marco-corpo { padding: 20px 22px; }
-.marco-periodo { font-size: .8rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--secundaria); }
+.marco-ano span { font-size: .8rem; color: var(--texto-suave); }
+
+/* Ícone sobre a linha */
+.marco-icone {
+  position: absolute; left: 152px; top: 2px; width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 1.25rem; z-index: 1;
+  background: var(--superficie); border: 3px solid var(--secundaria);
+  box-shadow: 0 0 0 6px var(--fundo);
+}
+
+/* Cartão */
+.marco-card {
+  background: var(--superficie); border: 1px solid var(--borda); border-left: 5px solid var(--primaria);
+  border-radius: var(--raio); box-shadow: var(--sombra); position: relative;
+  transition: transform .25s, border-color .25s;
+}
+.marco-card:hover { transform: translateX(6px); border-left-color: var(--secundaria); }
+.marco-card::before {
+  content: ""; position: absolute; left: -13px; top: 16px; width: 12px; height: 12px;
+  background: var(--primaria); clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+.marco-card:hover::before { background: var(--secundaria); }
+.marco-corpo { padding: 20px 24px; }
+.marco-periodo { font-size: .78rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--secundaria); }
 .marco-corpo h3 { font-family: var(--fonte-titulo); font-size: 1.4rem; margin: 4px 0 10px; }
 .marco-corpo p { color: var(--texto-suave); }
-.marco-escola { font-size: .85rem; margin-top: 4px; color: var(--texto-suave); font-style: italic; }
+.marco-escola {
+  display: inline-block; margin-top: 12px; padding: 4px 12px; border-radius: 999px;
+  background: var(--lavanda); color: var(--primaria); font-size: .82rem; font-weight: 600;
+}
 
 /* Sanfona "Momento inesquecível" */
 .sanfona { margin-top: 14px; border-top: 1px dashed var(--borda); padding-top: 10px; }
@@ -253,9 +274,12 @@ button { font: inherit; cursor: pointer; }
   }
   .nav-links.aberto { display: flex; }
 
-  .linha-tempo::before { left: 20px; }
-  .marco, .marco:nth-child(even) { width: 100%; left: 0; padding: 0 0 40px 60px; }
-  .marco:nth-child(odd)::after, .marco:nth-child(even)::after { left: -2px; right: auto; }
+  .linha-tempo::before { left: 21px; }
+  .marco { grid-template-columns: 1fr; gap: 8px; padding-left: 62px; }
+  .marco-ano { text-align: left; padding-top: 8px; }
+  .marco-ano strong { display: inline; font-size: 1.25rem; margin-right: 8px; }
+  .marco-icone { left: 0; }
+  .marco-card::before { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

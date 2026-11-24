@@ -9,7 +9,7 @@ Atividade avaliativa final da disciplina de **Programação Web**: site pessoal 
 
 ```
 ├── index.html          → página principal
-├── css/style.css       → estilos (tema claro/escuro, responsivo)
+├── css/style.css       → estilos (tons de roxo, tema claro/escuro, responsivo)
 ├── js/dados.js         → CONTEÚDO: memórias escolares
 ├── js/redacoes.js      → as 16 redações (modelo ENEM)
 ├── js/script.js        → interatividade

@@ -38,21 +38,27 @@ $$(".nav-links a").forEach((link) => link.addEventListener("click", () => navLin
    MEMÓRIAS — linha do tempo
    ========================================================= */
 const linhaTempo = $("#linhaTempo");
-linhaTempo.innerHTML = MEMORIAS.map((m) => `
-  <li class="marco revelar" data-etapa="${m.etapa}" data-icone="${m.icone}">
+linhaTempo.innerHTML = MEMORIAS.map((m) => {
+  // "1º ano · 2015" → série = "1º ano", ano = "2015"
+  const [serie, ano] = m.periodo.split(" · ");
+  return `
+  <li class="marco revelar" data-etapa="${m.etapa}">
+    <div class="marco-ano"><strong>${ano || ""}</strong></div>
+    <span class="marco-icone" aria-hidden="true">${m.icone}</span>
     <div class="marco-card">
       <div class="marco-corpo">
-        <span class="marco-periodo">${m.periodo}</span>
+        <span class="marco-periodo">${serie}</span>
         <h3>${m.titulo}</h3>
         <p>${m.texto}</p>
-        <p class="marco-escola">${m.escola}</p>
+        <span class="marco-escola">📍 ${m.escola}</span>
         <details class="sanfona">
           <summary>Momento inesquecível</summary>
           <p>${m.momento}</p>
         </details>
       </div>
     </div>
-  </li>`).join("");
+  </li>`;
+}).join("");
 
 // Filtro por etapa
 $$("#filtrosEtapa .filtro").forEach((botao) => {
@@ -209,7 +215,7 @@ let pedacos = [];
 function soltarConfete() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  const cores = ["#1e3a8a", "#c9a227", "#e11d48", "#16a34a", "#7c3aed", "#f97316"];
+  const cores = ["#5b21b6", "#7c3aed", "#a855f7", "#c084fc", "#a21caf", "#e9d5ff"];
   pedacos = Array.from({ length: 180 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * -canvas.height,
