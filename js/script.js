@@ -174,6 +174,8 @@ const observador = new IntersectionObserver((entradas) => {
     if (ent.isIntersecting) { ent.target.classList.add("visivel"); observador.unobserve(ent.target); }
   });
 }, { threshold: 0.15 });
+// A animação só é ligada se o script chegou até aqui sem erros
+document.documentElement.classList.add("anima");
 $$(".revelar").forEach((el) => observador.observe(el));
 
 // Contadores animados

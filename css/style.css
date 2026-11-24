@@ -259,8 +259,8 @@ button { font: inherit; cursor: pointer; }
 #confete { position: fixed; inset: 0; pointer-events: none; z-index: 200; width: 100%; height: 100%; }
 
 /* Animação de entrada ao rolar */
-.revelar { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
-.revelar.visivel { opacity: 1; transform: none; }
+.anima .revelar { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+.anima .revelar.visivel { opacity: 1; transform: none; }
 
 /* =========================================================
    RESPONSIVO
@@ -284,7 +284,7 @@ button { font: inherit; cursor: pointer; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
-  .revelar { opacity: 1; transform: none; }
+  .anima .revelar { opacity: 1; transform: none; }
 }
 
 /* Repertórios no final da redação */
